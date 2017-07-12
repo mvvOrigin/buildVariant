@@ -12,9 +12,35 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            debuggable true
+            applicationIdSuffix ".debug"
+            ext.enableCrashlytics = false
+            buildConfigField "String", "API_SUFFIX", rootProject.endpoints.suffix.test
+        }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ext.enableCrashlytics = true
+            buildConfigField "String", "API_SUFFIX", rootProject.endpoints.suffix.prod
+        }
+    }
+    productFlavors {
+        disney {
+            applicationId "com.disney.android"
+            //signingConfig.disney
+            buildConfigField "String", "API_ENDPOINT", rootProject.endpoints.api.disney
+            resValue "string", "youtube_key", rootProject.keys.youtube.disney
+            versionCode 102
+            versionName "1.0.2"
+        }
+        marvel {
+            applicationId "com.marvel.android"
+            //signingConfig.marvel
+            buildConfigField "String", "API_ENDPOINT", rootProject.endpoints.api.marvel
+            resValue "string", "youtube_key", rootProject.keys.youtube.marvel
+            versionCode 136
+            versionName "1.3.6"
         }
     }
 }

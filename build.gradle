@@ -21,3 +21,23 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    endpoints = [
+            suffix : [
+                    test: "\"test\"",
+                    prod: "\"prod\""
+            ],
+            api : [
+                    disney: "\"https://.....\"",
+                    marvel: "\"https://.....\"",
+            ]
+    ]
+    keys = [
+            youtube : [
+                    disney: "\"fsdsdfsdfsfsfs\"",
+                    marvel: "\"dsfsfsdfsfsddfs\""
+            ]
+    ]
+
+}
