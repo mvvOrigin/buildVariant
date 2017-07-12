@@ -42,6 +42,13 @@ android {
             versionCode 136
             versionName "1.3.6"
         }
+        // add pixel
+
+        // sale pixel
+
+        // debug / release
+
+        //
     }
 }
 
