@@ -11,10 +11,40 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    /**
+     * Configure build Types debug / release
+     */
     buildTypes {
-        release {
+        debug {
+            debuggable true
             minifyEnabled false
+            applicationIdSuffix ".debug"
+            ext.enableCrashlytics = false
+            buildConfigField "String", "API_ENDPOINT", rootProject.endpoints.api.dev
+        }
+        release {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ext.enableCrashlytics = true
+            buildConfigField "String", "API_ENDPOINT", rootProject.endpoints.api.prod
+        }
+    }
+    /**
+     * Configure product Flavors free / pro
+     */
+    productFlavors {
+        free {
+            versionCode 101
+            versionName "1.0.1"
+            applicationIdSuffix ".free"
+            minSdkVersion 23
+        }
+        pro {
+            versionCode 141
+            versionName "1.4.1"
+            applicationIdSuffix ".pro"
+            buildConfigField "String", "AMASON_BUCKET_NAME", rootProject.endpoints.amazonBucketName
+            minSdkVersion 19
         }
     }
 }
@@ -27,4 +57,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+    /**
+     * Declare variant dependency
+     */
+    proCompile "com.amazonaws:aws-android-sdk-s3:2.2.17"
 }

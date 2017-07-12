@@ -21,3 +21,13 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    endpoints = [
+            api   : [
+                    dev: "\"https://dev.com\"",
+                    prod: "\"https://prod.com\""
+            ],
+            amazonBucketName: "\"pro-vatiant-content-us\""
+    ]
+}
