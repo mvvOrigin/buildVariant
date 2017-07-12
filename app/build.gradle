@@ -12,9 +12,33 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
+        debug {
+            debuggable true
             minifyEnabled false
+            applicationIdSuffix ".debug"
+            ext.enableCrashlytics = false
+            buildConfigField "String", "API_ENDPOINT", rootProject.endpoints.api.dev
+        }
+        release {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ext.enableCrashlytics = true
+            buildConfigField "String", "API_ENDPOINT", rootProject.endpoints.api.prod
+        }
+    }
+    flavorDimensions("upgrade","company")
+    productFlavors {
+        free {
+            dimension "upgrade"
+        }
+        pro {
+            dimension "upgrade"
+        }
+        disney {
+            dimension "company"
+        }
+        marvel {
+            dimension "company"
         }
     }
 }
