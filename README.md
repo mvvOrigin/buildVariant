@@ -1,5 +1,7 @@
 ## buildVariant
-Power Point presentation https://drive.google.com/open?id=0B5AU7osTHtb7UDU0QVMwaWZVMjA
+![Screenshots](info/index.png)
+
+Power Point presentation https://github.com/mvvOrigin/buildVariant/blob/master/info/BuildVariants.pptx
 
 ### Source used
 * Configure Your Build</br>
